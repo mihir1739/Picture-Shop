@@ -9,8 +9,10 @@ import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import BookmarkAdd from '@mui/icons-material/BookmarkAddOutlined';
 import Sidebar from './sidebar';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   return (
     <div >
       <Sidebar title='Dashboard'/>
@@ -22,7 +24,6 @@ const Dashboard = () => {
                 Shop
               </Typography>
               <IconButton
-                aria-label="bookmark Bahamas Islands"
                 variant="plain"
                 color="neutral"
                 size="sm"
@@ -49,8 +50,8 @@ const Dashboard = () => {
                   variant="solid"
                   size="sm"
                   color="primary"
-                  aria-label="Explore Bahamas Islands"
                   sx={{ ml: 'auto', fontWeight: 600 }}
+                  onClick={()=>{navigate('/shop');}}
                 >
                   Visit
                 </Button>
@@ -61,7 +62,6 @@ const Dashboard = () => {
                 Cart
               </Typography>
               <IconButton
-                aria-label="bookmark Bahamas Islands"
                 variant="plain"
                 color="neutral"
                 size="sm"
@@ -88,8 +88,9 @@ const Dashboard = () => {
                   variant="solid"
                   size="sm"
                   color="primary"
-                  aria-label="Explore Bahamas Islands"
                   sx={{ ml: 'auto', fontWeight: 600 }}
+                  onClick={()=>{navigate('/cart');}}
+
                 >
                   Visit
                 </Button>
@@ -102,7 +103,6 @@ const Dashboard = () => {
                 Dashboard
               </Typography>
               <IconButton
-                aria-label="bookmark Bahamas Islands"
                 variant="plain"
                 color="neutral"
                 size="sm"
@@ -129,8 +129,9 @@ const Dashboard = () => {
                   variant="solid"
                   size="sm"
                   color="primary"
-                  aria-label="Explore Bahamas Islands"
                   sx={{ ml: 'auto', fontWeight: 600 }}
+                  onClick={()=>{navigate('/dashboard');}}
+
                 >
                   Visit
                 </Button>
@@ -170,6 +171,7 @@ const Dashboard = () => {
                   color="primary"
                   aria-label="Explore Bahamas Islands"
                   sx={{ ml: 'auto', fontWeight: 600 }}
+                  onClick={()=>{navigate('/check');}}
                 >
                   Visit
                 </Button>

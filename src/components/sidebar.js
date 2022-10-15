@@ -20,7 +20,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-
+import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 
 function Icon(index){
@@ -39,6 +39,7 @@ function Icon(index){
 }
 
 function Sidebar(props) {
+  const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -53,7 +54,8 @@ function Sidebar(props) {
       <List>
         {["Dashboard", "Cart", "Shop", "Check Out"].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={()=> {navigate(
+                `/${String(text).split(' ')[0].toLowerCase()}`);}}>
               <ListItemIcon>
                 {Icon(index)}
               </ListItemIcon>
@@ -66,7 +68,7 @@ function Sidebar(props) {
       <List>
         {['Logout', 'Contact Us'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={()=> {navigate('/')}}>
               <ListItemIcon>
                 {index % 2 === 0 ? <LogoutIcon /> : <MailIcon />}
               </ListItemIcon>

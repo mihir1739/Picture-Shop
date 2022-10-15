@@ -7,8 +7,9 @@ import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
 import { width } from '@mui/system';
 import './common.css';
-
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
+  const navigate = useNavigate();
   return (
     <div className="container">
     <CssVarsProvider>
@@ -49,7 +50,7 @@ export default function Login() {
             label="Password"
             sx={{width:'50%',alignSelf:'center'}}
           />
-          <Button sx={{ mt: 1 ,width:'50%',alignSelf:'center'/* margin top */ }}>Log in</Button>
+          <Button sx={{ mt: 1 ,width:'50%',alignSelf:'center' }} onClick={()=>{navigate('/dashboard/')}}>Log in</Button>
           <Typography
             endDecorator={<Link href="/sign-up">Sign up</Link>}
             fontSize="sm"

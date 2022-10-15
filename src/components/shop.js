@@ -12,16 +12,20 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-var cart = []
+// import * as fs from 'fs'
+const fs = require('fs');
+const stateFile = "./items.txt";
+var arr = []
 
-function Template({handleClick,number,setCart}) {
+function Template({handleClick,number,setCart,cart}) {
     function addtocart(price,id){
         let obj = {
             id : id,
             price : price
         }
-        cart.push(obj);
-        setCart(cart);
+        arr.push(obj)
+        setCart(arr);
+        fs.appendFileSync(stateFile, `${id} ${price}`);
     }
     let price = Math.floor(Math.random() * 10000);
     let id = number;
@@ -78,7 +82,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 function Shop(props) {
     let arr = []
-    console.log(cart);
+    console.log(props.cart);
     const [open, setOpen] = React.useState(false);
     for (let i = 0; i < 21; i++) {
         arr.push(i);
@@ -112,7 +116,7 @@ function Shop(props) {
         </Snackbar>
         <Grid container spacing={2}>
           {arr.map((text,ind) => (
-            <Template key = {ind} handleClick={SnackBar} number={text} text={ind} setCart={props.func}/>
+            <Template key = {ind} handleClick={SnackBar} number={text} text={ind} setCart={props.func} cart={props.cart}/>
           )
 
           )}
@@ -122,7 +126,7 @@ function Shop(props) {
   );
 };
 
-export {Shop , cart}
+export default Shop;
 
 
 
