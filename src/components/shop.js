@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,createContext} from 'react';
+import React from 'react';
 import './common.css';
 import Grid from '@mui/material/Grid';
 import AspectRatio from '@mui/joy/AspectRatio';
@@ -82,7 +82,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 function Shop(props) {
     let arr = []
-    console.log(props.cart);
     const [open, setOpen] = React.useState(false);
     for (let i = 0; i < 21; i++) {
         arr.push(i);

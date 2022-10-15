@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
@@ -22,18 +23,29 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
-
+const useStyles = makeStyles({
+  root: {
+    '&$selected': {
+      backgroundColor: ' #070E43',
+      fontWeight:'800'
+    },
+  },
+  selected: {
+    color: '#FFFFFF',
+    backgroundColor:' #0B1350'
+  },
+});
 function Icon(index){
-  if(index == 0){
+  if(index === 0){
     return <DashboardIcon/>
   }
-  else if(index == 1){
+  else if(index === 1){
     return <ShoppingCartIcon />
   }
-  else if(index == 2){
+  else if(index === 2){
     return <LocalMallIcon />
   }
-  else if(index == 3){
+  else if(index === 3){
     return <PaymentsIcon />
   }
 }
@@ -42,19 +54,22 @@ function Sidebar(props) {
   const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const [ind,setInd] = React.useState(0);
+  const handleListItemClick = (index) => {
+    setInd(index);
+  };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const classes = useStyles();
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
         {["Dashboard", "Cart", "Shop", "Check Out"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton onClick={()=> {navigate(
+          <ListItem selected={ind===index} key={text} disablePadding>
+            <ListItemButton selected={ind===index} classes={{ root: classes.root, selected: classes.selected }} onClick={()=> {handleListItemClick(index); navigate(
                 `/${String(text).split(' ')[0].toLowerCase()}`);}}>
               <ListItemIcon>
                 {Icon(index)}

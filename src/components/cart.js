@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-import { useDemoData } from '@mui/x-data-grid-generator';
 import Sidebar from './sidebar';
-
 import Button from '@mui/joy/Button';
 
 
@@ -17,6 +14,7 @@ function Cart () {
         sum += obj.price;
         cart.push(obj)    
     }
+    let j = 8;
   return (
     <div >
       <Sidebar title='Cart'/>
@@ -32,7 +30,7 @@ function Cart () {
       </thead>
       <tbody>
         {cart.map((obj)=> (
-            <tr>
+            <tr  key ={j++}>
                 <td>Picture - {obj.id}</td>
                 <td><img src={`https://robohash.org/tak${obj.id}?100x100`}/></td>
                 <td>{obj.price}</td>

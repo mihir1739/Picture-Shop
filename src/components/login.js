@@ -5,7 +5,6 @@ import Typography from '@mui/joy/Typography';
 import TextField from '@mui/joy/TextField';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
-import { width } from '@mui/system';
 import './common.css';
 import { useNavigate } from 'react-router-dom';
 export default function Login() {
